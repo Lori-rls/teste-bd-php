@@ -6,11 +6,21 @@ $usuario = "root";
 $senha = "";
 
 //Instânciando objeto do tipo mysql e fazendo conexão
-$mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
+$conn = mysqli_connect($hostname, $usuario, $senha, $bancodedados);
 
 //Caso erro:
-if ($mysqli->connect_errno) {
-    echo "Falha ao conectar: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+echo "Conexão feita com sucesso \o/";
+
+$sql = "INSERT INTO usuarios (nome, idade) VALUES ('Carla', '69')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "\nNovo cadastro feito com sucesso \o/";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
 ?>
