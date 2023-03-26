@@ -20,7 +20,7 @@ $sql = "INSERT INTO usuarios (nome, idade) VALUES ('Carla', '69')";
 if (mysqli_query($conn, $sql)) {
     echo "\nNovo cadastro feito com sucesso \o/";
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Erro: " . $sql . "<br>" . mysqli_error($conn);
 }
 
 ?>
